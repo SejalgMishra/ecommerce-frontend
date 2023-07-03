@@ -1,0 +1,9 @@
+.logo {
+  @apply flex h-10 md:h-auto items-baseline;
+}
+.logotext {
+  @apply text-3xl font-logo;
+}
+.logospan {
+    @apply text-base font-logo;
+}

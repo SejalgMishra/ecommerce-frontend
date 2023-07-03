@@ -13,7 +13,7 @@ import { addToCart } from "../redux/cart/cartAction";
 const Products = () => {
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.product.products);
+  const products = useSelector((state: any) => state.product.products);
   const token: any = localStorage.getItem("token");
   const { error } = useQuery(["get_products"], () => {
     getDataAPI("user/product", token).then((res) => {
@@ -42,8 +42,6 @@ const Products = () => {
         .catch((error) => {
           console.log(error.message);
         });
-
-        
     }
   };
 
@@ -51,37 +49,47 @@ const Products = () => {
     <div className="flex-wrap">
       <h1 className="text-3xl   font-bold py-6 font-logo">New Arrivals</h1>
       <div className="flex flex-row justify-between flex-wrap h-[399px] md:h-auto overflow-hidden">
-        {products.map((product) => (
-          <div key={product.id} className="flex flex-col ">
-            <img
-              src={product.productimage}
-              alt={product.name}
-              className="aspect-auto   h-[315px] w-[315px] object-cover "
-            />
-            <h2 className="font-sans text-xl mb-1">{product.name}</h2>
-            <h3 className="font-font mb-1">productCategory</h3>
-            <div className="flex gap-2">
-              <p className="font-base">
-                {new Intl.NumberFormat("en-IN", {
-                  currency: "INR",
-                  style: "currency",
-                }).format(product.price)}
-              </p>
-              <p className="line-through opacity-70">
-                {new Intl.NumberFormat("en-IN", {
-                  currency: "INR",
-                  style: "currency",
-                }).format(product.price)}
-              </p>
+        {products.map(
+          (product: {
+            id: React.Key | null | undefined;
+            productimage: string | undefined;
+            name:
+              | string
+            price: number | bigint;
+          }) => (
+            <div key={product.id} className="flex flex-col ">
+              <img
+                src={product.productimage}
+                alt={product.name}
+                className="aspect-auto   h-[315px] w-[315px] object-cover "
+              />
+              <h2 className="font-sans text-xl mb-1">{product.name}</h2>
+              <h3 className="font-font mb-1">productCategory</h3>
+              <div className="flex gap-2">
+                <p className="font-base">
+                  {new Intl.NumberFormat("en-IN", {
+                    currency: "INR",
+                    style: "currency",
+                  }).format(product.price)}
+                </p>
+                <p className="line-through opacity-70">
+                  {new Intl.NumberFormat("en-IN", {
+                    currency: "INR",
+                    style: "currency",
+                  }).format(product.price)}
+                </p>
+              </div>
+              <button className="btn-white" onClick={() => addCart(product.id)}>
+                Add to cart
+              </button>
             </div>
-            <button className="btn-white" onClick={() => addCart(product.id)}>
-              Add to cart
-            </button>
-          </div>
-        ))}
+          )
+        )}
       </div>
       <div className="flex justify-center py-14">
-        <a className="btn" href="/productpage">Shop All</a>
+        <a className="btn" href="/productpage">
+          Shop All
+        </a>
       </div>
     </div>
   );

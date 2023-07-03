@@ -11,10 +11,6 @@ interface props {
 const token: any = localStorage.getItem("token");
 
 
-
-
-
-
 const SingleProduct = () => {
   const product = useSelector((state:any) => state.product.product);
   console.log(product);

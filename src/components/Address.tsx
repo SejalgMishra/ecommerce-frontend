@@ -35,7 +35,10 @@ const navigate = useNavigate()
   };
 
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: {
+    phonenum: any;
+    country: any; preventDefault: () => void; 
+}) => {
     e.preventDefault()
     try {
       const res = await patchDataAPI("details", userData, token);

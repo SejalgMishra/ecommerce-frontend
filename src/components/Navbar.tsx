@@ -38,9 +38,9 @@ const Navbar = () => {
   
   
   
-  const cartItem = useSelector((state) => state.cart.cart);
+  const cartItem = useSelector((state:any) => state.cart.cart);
 
- const { error } = useQuery(["get_all_products"], () => {
+ const {  } = useQuery(["get_all_products"], () => {
    getDataAPI("myProfile", token).then((res) => {
     
      dispatch(userData(res));
@@ -68,7 +68,7 @@ const Navbar = () => {
     setMenu(!menu);
   };
 
-  const logOutUser = (e: { preventDefault: () => void; } | undefined) => {
+  const logOutUser = (e: { preventDefault: () => void; } ) => {
     e.preventDefault()
     localStorage.removeItem("token")
     console.log("heello");

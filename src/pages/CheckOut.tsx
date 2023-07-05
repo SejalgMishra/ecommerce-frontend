@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 import { postData, postDataAPI } from "../utilis/fetchDataApi";
 
 const CheckOut = () => {
-  const userAddress = useSelector((state) => state.auth);
+  const userAddress = useSelector((state:any) => state.auth);
 
-  const cartItem = useSelector((state) => state.cart.cart);
+  const cartItem = useSelector((state:any) => state.cart.cart);
 
-  const subtotal = cartItem.reduce((total, item) => {
+  const subtotal = cartItem.reduce((total: number, item: { price: number; quantity: number; }) => {
     return total + item.price * item.quantity;
   }, 0);
 

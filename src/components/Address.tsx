@@ -83,7 +83,7 @@ const navigate = useNavigate()
         }}
         onSubmit={handleSubmit}
       >
-        {({ values, errors }) => (
+        {({  }) => (
           <Form
             onSubmit={handleSubmit}
             className="    mt-36  h-[70%] text-white flex justify-center"

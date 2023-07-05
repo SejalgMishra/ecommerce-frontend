@@ -30,7 +30,7 @@ const ForgetPassword = () => {
 
   return (
     <div>
-      <Formik initialValues={initialValues} >
+      <Formik initialValues={initialValues}  >
         <form className='  "max-w-screen-sm  mx-auto #d4d4d8  mt-36  h-[70%] text-white ' onSubmit={handleSubmit}>
           <div className="flex flex-col items-center  justify-center px-3 bg-black opacity-90 rounded-xl py-36  max-w-screen-lg mx-auto">
           <h1 className="mb-4 text-xl font-font">Kindly enter your email where we will send link :</h1>
